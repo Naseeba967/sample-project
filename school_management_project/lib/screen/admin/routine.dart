@@ -11,7 +11,7 @@ class Routine extends StatefulWidget {
 
 class _RoutineState extends State<Routine> {
   TableBorder tableBorder = TableBorder();
-  SearchType _searchType = SearchType.class1;
+final  SearchType _searchType = SearchType.class1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
