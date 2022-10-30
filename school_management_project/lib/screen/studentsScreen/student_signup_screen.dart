@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:school_management_project/screen/studentsScreen/student_signup_screen.dart';
+import 'package:school_management_project/screen/studentsScreen/student_login_screen.dart';
 import 'package:school_management_project/widgets/constant.dart';
-import 'package:school_management_project/widgets/textfieldinput.dart';
 
-class StudentLoginScreen extends StatefulWidget {
-  const StudentLoginScreen({super.key});
+import '../../widgets/textfieldinput.dart';
+
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<StudentLoginScreen> createState() => _StudentLoginScreenState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _StudentLoginScreenState extends State<StudentLoginScreen> {
+class _SignUpState extends State<SignUp> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                "Log in",
+                "Create an account",
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w900,
@@ -43,7 +46,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                 height: 20,
               ),
               Text(
-                "welcome to school please put your login credentials  below  to start  using our application",
+                "Get access by creating an account",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
               ),
             ],
@@ -75,6 +78,24 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const Text(
+                    'Email',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 35,
+                    width: 220,
+                    child: TextFieldInput(
+                        textEditingController: passwordController,
+                        hintText: "Enter your email",
+                        textInputType: TextInputType.emailAddress),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 26),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text(
                     'Password',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -90,21 +111,6 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
               )
             ]),
         const SizedBox(height: 26),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            InkWell(
-              onTap: () {},
-              child: const Text("forgot Password?",
-                  style: TextStyle(
-                    color: backgroundColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-          ],
-        ),
         const Divider(),
         const SizedBox(height: 26),
         Column(
@@ -115,15 +121,16 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                 onTap: () {},
                 child: Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.all(5),
-                  margin: const EdgeInsets.all(11),
-                  width: 50,
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
+                  height: 30,
+                  width: 140,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
                       shape: BoxShape.rectangle,
                       color: backgroundColor),
                   child: const Text(
-                    'Log in',
+                    "Create my account",
                     style: TextStyle(color: Colors.white),
                   ),
                 )),
@@ -134,16 +141,19 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Don\'t have an account ? ',
+              'Already  have an account ? ',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => const SignUp())));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const StudentLoginScreen(),
+                    ));
               },
               child: const Text(
-                'Sign Up',
+                'Log in',
                 style: TextStyle(color: backgroundColor),
               ),
             )

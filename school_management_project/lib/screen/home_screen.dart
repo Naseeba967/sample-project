@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_project/screen/TeachersScreen/teacher_login_screen.dart';
-import 'package:school_management_project/screen/admin/admin_home_screen.dart';
-import 'package:school_management_project/screen/principleScreen/principle_login_screen.dart';
 import 'package:school_management_project/screen/studentsScreen/student_login_screen.dart';
 import 'package:school_management_project/screen/visiterScreen/visiter_login_screen.dart';
 import 'package:school_management_project/widgets/constant.dart';
-import 'package:school_management_project/widgets/home_screen_widget.dart';
+
+import 'admin/admin_login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,40 +21,74 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          HomeScreenWidget(text: 'login/SignUp Visiter',function:  Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const VisiterLoginScreen()),
-      ),),
+          homeScreenWidget("login/SignUp Visiter", () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const VisiterLoginScreen()));
+          }),
           const SizedBox(
             height: 26,
           ),
-          HomeScreenWidget(text: 'login as  Students',function:  Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) =>const StudentLoginScreen()),
-      ),),
+          homeScreenWidget("Student login Screen", () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const StudentLoginScreen()));
+          }),
           const SizedBox(height: 26),
-          HomeScreenWidget(text: 'login as  Teacher',function:  Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) =>const TeacherLoginScreen()),
-      ), ),
+          homeScreenWidget("Teacher login Screen", () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TeacherLoginScreen()));
+          }),
           const SizedBox(
             height: 26,
           ),
-          HomeScreenWidget(text: 'login as Admin', function:  Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) =>const AdminHomeScreen()),
-      ),),
+          homeScreenWidget("Admin login Screen", () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AdminLoginScreen()));
+          }),
           const SizedBox(
             height: 26,
           ),
-          HomeScreenWidget(text: 'login as principle',function:  Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) =>const PrincipleScreen()),
-      ),),
+          homeScreenWidget("Principle login Screen", () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const StudentLoginScreen()));
+          }),
         ],
       ),
     );
   }
 
- 
+  Widget homeScreenWidget(String text, Function function) {
+    return InkWell(
+      onTap: () {
+        function();
+        setState(() {});
+      },
+      child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(11),
+          height: 50,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              shape: BoxShape.rectangle,
+              color: backgroundColor),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                  color: textcolor, fontSize: 20, fontWeight: fontWeight),
+            ),
+          )),
+    );
+  }
 }

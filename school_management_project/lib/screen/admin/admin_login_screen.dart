@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:school_management_project/screen/studentsScreen/student_signup_screen.dart';
+import 'package:school_management_project/screen/admin/admin_home_screen.dart';
 import 'package:school_management_project/widgets/constant.dart';
-import 'package:school_management_project/widgets/textfieldinput.dart';
 
-class StudentLoginScreen extends StatefulWidget {
-  const StudentLoginScreen({super.key});
+import '../../widgets/textfieldinput.dart';
+
+class AdminLoginScreen extends StatefulWidget {
+  const AdminLoginScreen({super.key});
 
   @override
-  State<StudentLoginScreen> createState() => _StudentLoginScreenState();
+  State<AdminLoginScreen> createState() => _AdminLoginScreenState();
 }
 
-class _StudentLoginScreenState extends State<StudentLoginScreen> {
+class _AdminLoginScreenState extends State<AdminLoginScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -65,7 +66,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                     width: 220,
                     child: TextFieldInput(
                         textEditingController: usernameController,
-                        hintText: "Enter first Name",
+                        hintText: "Admin Name",
                         textInputType: TextInputType.text),
                   )
                 ],
@@ -112,7 +113,12 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => const AdminHomeScreen())));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(5),
@@ -130,25 +136,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
           ],
         ),
         const SizedBox(height: 26),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Don\'t have an account ? ',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => const SignUp())));
-              },
-              child: const Text(
-                'Sign Up',
-                style: TextStyle(color: backgroundColor),
-              ),
-            )
-          ],
-        ),
+        
       ],
     ));
   }
