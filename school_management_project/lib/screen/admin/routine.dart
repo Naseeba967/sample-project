@@ -10,7 +10,7 @@ class Routine extends StatefulWidget {
 }
 
 class _RoutineState extends State<Routine> {
-  TableBorder tableBorder = TableBorder();
+ 
 final  SearchType _searchType = SearchType.class1;
   @override
   Widget build(BuildContext context) {
@@ -89,31 +89,35 @@ final  SearchType _searchType = SearchType.class1;
                             value: _searchType,
                             items: const <DropdownMenuItem<SearchType>>[
                               DropdownMenuItem<SearchType>(
-                                child: Text('Class 1'),
+                              
                                 value: SearchType.class1,
+                                  child: Text('Class 1'),
                               ),
                               DropdownMenuItem<SearchType>(
-                                child: Text('Class 2'),
                                 value: SearchType.class2,
+                                child: Text('Class 2'),
+                                
                               ),
                               DropdownMenuItem<SearchType>(
-                                child: Text('Class 3'),
                                 value: SearchType.class3,
+                                child: Text('Class 3'),
+                                
                               ),
                               DropdownMenuItem<SearchType>(
+                                 value: SearchType.class4,
                                 child: Text('Class 4'),
-                                value: SearchType.class4,
+                               
                               ),
                             ],
-                            onChanged: ((_value) {
-                              _value = _searchType;
+                            onChanged: ((value) {
+                              value = _searchType;
                             }),
                           ),
                         )
                       ],
                     ),
                     DataTable(
-                      border: tableBorder,
+                      border:const  TableBorder(),
                       columns: const [
                         DataColumn(label: Text('#'), numeric: true),
                         DataColumn(label: Text('Subject Code')),

@@ -18,7 +18,7 @@ class TextFieldInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: textEditingController,
-      cursorColor: Color.fromARGB(24, 158, 158, 158),
+      cursorColor: const Color.fromARGB(24, 158, 158, 158),
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder: OutlineInputBorder(

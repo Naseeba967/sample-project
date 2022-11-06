@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_management_project/screen/studentsScreen/student_home_screen.dart';
 import 'package:school_management_project/screen/studentsScreen/student_login_screen.dart';
 import 'package:school_management_project/widgets/constant.dart';
 
@@ -118,7 +119,9 @@ class _SignUpState extends State<SignUp> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             InkWell(
-                onTap: () {},
+                onTap: () {
+                           Navigator.push(context, MaterialPageRoute(builder: (context) =>const StudentHomeScreen(),));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(8),

@@ -3,6 +3,7 @@ import 'package:school_management_project/screen/admin/attendance.dart';
 import 'package:school_management_project/screen/admin/dashboard.dart';
 import 'package:school_management_project/screen/admin/routine.dart';
 import 'package:school_management_project/screen/splashscreen.dart';
+import 'package:school_management_project/screen/studentsScreen/student_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const StudentHomeScreen(),
       routes: {
         '/Attendance': (context) => const Attendance(),
         '/DashBoard': (context) => const DashBoard(),

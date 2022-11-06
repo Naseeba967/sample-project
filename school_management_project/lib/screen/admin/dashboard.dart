@@ -9,7 +9,7 @@ class  DashBoard extends StatefulWidget {
 class   DashBoardState extends State < DashBoard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body:  Text('DashBoard'),
     );
   }
